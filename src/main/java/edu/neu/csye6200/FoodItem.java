@@ -4,17 +4,25 @@ public class FoodItem extends Item {
     private String type;
 
     public FoodItem(String csv) {
-        String[] parts = csv.split(",");
+        super(parseId(csv), parseName(csv), parsePrice(csv)); // ✅ super() is now the first statement
+        this.type = parseType(csv);
+    }
 
-        // Extract values first
-        int id = Integer.parseInt(parts[0]);
-        String name = parts[1];
-        double price = Double.parseDouble(parts[2]);
+    // Helper methods to extract values BEFORE calling the constructor
+    private static int parseId(String csv) {
+        return Integer.parseInt(csv.split(",")[0]);
+    }
 
-        // Call super() as the first statement
-        super(id, name, price);
+    private static String parseName(String csv) {
+        return csv.split(",")[1];
+    }
 
-        this.type = parts[3]; // Set type after calling super
+    private static double parsePrice(String csv) {
+        return Double.parseDouble(csv.split(",")[2]);
+    }
+
+    private static String parseType(String csv) {
+        return csv.split(",")[3];
     }
 
     @Override

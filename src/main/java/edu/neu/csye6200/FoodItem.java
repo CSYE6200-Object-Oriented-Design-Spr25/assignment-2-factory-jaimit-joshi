@@ -4,11 +4,10 @@ public class FoodItem extends Item {
     private String type;
 
     public FoodItem(String csv) {
-        super(parseId(csv), parseName(csv), parsePrice(csv)); // ✅ super() is now the first statement
+        super(parseId(csv), parseName(csv), parsePrice(csv));
         this.type = parseType(csv);
     }
 
-    // Helper methods to extract values BEFORE calling the constructor
     private static int parseId(String csv) {
         return Integer.parseInt(csv.split(",")[0]);
     }

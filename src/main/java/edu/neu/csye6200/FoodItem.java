@@ -5,8 +5,16 @@ public class FoodItem extends Item {
 
     public FoodItem(String csv) {
         String[] parts = csv.split(",");
-        super(Integer.parseInt(parts[0]), parts[1], Double.parseDouble(parts[2]));
-        this.type = parts[3];
+
+        // Extract values first
+        int id = Integer.parseInt(parts[0]);
+        String name = parts[1];
+        double price = Double.parseDouble(parts[2]);
+
+        // Call super() as the first statement
+        super(id, name, price);
+
+        this.type = parts[3]; // Set type after calling super
     }
 
     @Override
